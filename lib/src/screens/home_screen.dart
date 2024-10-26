@@ -1,5 +1,8 @@
+import 'package:destiny_story/src/controller/story_brain.dart';
 import 'package:destiny_story/src/widgets/select_path_button.dart';
 import 'package:flutter/material.dart';
+
+StoryBrain storyBrain = StoryBrain();
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -27,11 +30,15 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Center(
-                    child: Text(
-                      'Hello World!',
-                      style: TextStyle(
-                        color: Colors.blueGrey[50],
-                        fontSize: 22,
+                    child: Container(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Text(
+                        storyBrain.getStory().title,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          color: Colors.blueGrey[50],
+                          fontSize: 22,
+                        ),
                       ),
                     ),
                   ),
@@ -39,16 +46,16 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: SelectPathButton(
-                    onPressed: () {},
-                    text: 'Choice 1',
+                    onPressed: () => storyBrain.nextStory(1),
+                    text: storyBrain.getChoice1(),
                     backgroundColor: Colors.greenAccent,
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: SelectPathButton(
-                    onPressed: () {},
-                    text: 'Choice 2',
+                    onPressed: () => storyBrain.nextStory(2),
+                    text: storyBrain.getChoice2(),
                     backgroundColor: Colors.pink[200],
                   ),
                 ),
