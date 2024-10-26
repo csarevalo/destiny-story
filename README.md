@@ -1,4 +1,4 @@
-# destiny_story
+# Destiny story
 
 A beginner Flutter project.
 
