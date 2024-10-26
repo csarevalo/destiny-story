@@ -1,6 +1,7 @@
 import 'package:destiny_story/src/models/story.dart';
+import 'package:flutter/material.dart';
 
-class StoryBrain {
+class StoryBrain extends ChangeNotifier {
   /// Used to keep track progress of the [Story]
   int storyIndex = 0;
 
@@ -56,6 +57,7 @@ class StoryBrain {
     // Restart the story once it's ending
     if (_storyData[storyIndex].ending) {
       storyIndex = 0;
+      restart();
       return;
     }
     // Transform input choice (1 or 2) to index (0 or 1)
@@ -70,29 +72,33 @@ class StoryBrain {
         storyIndex = [5, 4][choice];
       default:
         storyIndex = 0;
+        restart();
+        return;
     }
     // Verify element exists in debugMode
     assert(_storyData.elementAtOrNull(storyIndex) != null, 'Invalid Story Id');
+    notifyListeners();
   }
 
   /// Get current [Story]
   Story getStory() {
-    return _storyData.first;
+    return _storyData[storyIndex];
   }
 
   /// Get the current [Story]'s first choice outcome
   String getChoice1() {
-    return _storyData.first.choice1;
+    return _storyData[storyIndex].choice1;
   }
 
   /// Get the current [Story]'s second choice outcome
   String getChoice2() {
-    return _storyData.first.choice2;
+    return _storyData[storyIndex].choice2;
   }
 
   /// Restart the overall story progress [storyIndex]
   void restart() {
     storyIndex = 0;
+    notifyListeners();
   }
 }
 
