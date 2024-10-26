@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const DestinyStoryApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class DestinyStoryApp extends StatelessWidget {
+  const DestinyStoryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blueGrey,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: const Scaffold(
+        body: DecoratedBox(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(
+                'assets/imgs/background.png',
+              ),
+            ),
+          ),
+          child: Center(
+            child: Text('Hello World!'),
+          ),
         ),
       ),
     );
