@@ -101,20 +101,3 @@ class StoryBrain extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-
-//TODO: Step 23 - Use the storyIndexber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
-
-
-
-//TODO: Step 25 - Change the storyIndexber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyIndexber) and selecting Refactor -> Rename to make the change across all the places where it's used.
-
-
-
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
-
-//TODO: Step 21 - Using the story plan, update nextStory() to change the storyIndexber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyIndexber is 0, the storyIndexber should become 2.
-
-//TODO: Step 22 - In nextStory() if the storyIndexber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyIndexber to 0.
-
-//TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyIndexber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
