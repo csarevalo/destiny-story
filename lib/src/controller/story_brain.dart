@@ -58,7 +58,7 @@ class StoryBrain extends ChangeNotifier {
     if (_storyData[storyIndex].ending) {
       storyIndex = 0;
       restart();
-      return;
+      return; //keep
     }
     // Transform input choice (1 or 2) to index (0 or 1)
     choice--;
@@ -73,7 +73,7 @@ class StoryBrain extends ChangeNotifier {
       default:
         storyIndex = 0;
         restart();
-        return;
+        return; //keep
     }
     // Verify element exists in debugMode
     assert(_storyData.elementAtOrNull(storyIndex) != null, 'Invalid Story Id');
